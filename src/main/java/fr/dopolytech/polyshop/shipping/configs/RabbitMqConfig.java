@@ -18,9 +18,20 @@ import fr.dopolytech.polyshop.shipping.services.ShippingService;
 @Configuration
 public class RabbitMqConfig {
 
+  // Listen for the payment service to send shipping messages
   @Bean
   public Queue shippingQueue() {
     return new Queue("shipping", false);
+  }
+
+  @Bean
+  public Queue shippingCancelQueue() {
+    return new Queue("shipping_cancel", false);
+  }
+
+  @Bean
+  public Queue inventoryConfirmedQueue() {
+    return new Queue("inventory_confirmed", false);
   }
 
   @Bean
